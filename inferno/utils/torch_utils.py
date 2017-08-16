@@ -105,6 +105,13 @@ def where(condition, if_true, if_false):
 
 
 def get_mean_std_data(dataset, prec=4, subset=None):
+    """
+    Get mean and std per channel of the input dataset
+    :param dataset: a torch.utils.data.Dataset
+    :param prec: output precision of mean/std
+    :param subset: subset size to calculate the mean/std over
+    :return: mean and std
+    """
     if subset is None:
         data = torch.cat([dataset[i][0][None] for i in range(len(dataset))])
     else:
