@@ -102,3 +102,14 @@ def where(condition, if_true, if_false):
     casted_condition = condition.type_as(if_true)
     output = casted_condition * if_true + (1 - casted_condition) * if_false
     return output
+
+
+def get_mean_std_data(dataset, prec=4, subset=None):
+    if subset is None:
+        data = torch.cat([dataset[i][0][None] for i in range(len(dataset))])
+    else:
+        sub = np.random.choice(range(min(len(dataset), subset)), subset, replace=False)
+        data = torch.cat([dataset[i][0][None] for i in sub])
+    mean = [round(torch.mean(data[:, i]), prec) for i in range(3)]
+    std = [round(torch.std(data[:, i]), prec) for i in range(3)]
+    return mean, std

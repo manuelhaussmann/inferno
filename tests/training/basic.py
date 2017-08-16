@@ -32,7 +32,7 @@ class TestTrainer(TestCase):
 
     def test_cifar(self):
         from inferno.trainers.basic import Trainer
-        from inferno.io.box.cifar10 import get_cifar10_loaders
+        from inferno.io.box.cifar import get_cifar10_loaders
         # Build cifar10 loaders
         trainloader, testloader = get_cifar10_loaders(root_directory=join(self.ROOT_DIR, 'data'),
                                                       download=self.DOWNLOAD_CIFAR)
@@ -137,7 +137,7 @@ class TestTrainer(TestCase):
             return
 
         from inferno.trainers.basic import Trainer
-        from inferno.io.box.cifar10 import get_cifar10_loaders
+        from inferno.io.box.cifar import get_cifar10_loaders
         import os
 
         # Make model
